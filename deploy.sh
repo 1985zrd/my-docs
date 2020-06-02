@@ -2,6 +2,11 @@
 
 #运行sh ./deploy.sh
 
+git add .
+git commit -m 'add'
+git pull
+git push
+
 npm run build
 cd .vuepress/
 
