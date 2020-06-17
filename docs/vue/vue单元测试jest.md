@@ -1,19 +1,30 @@
 # vue单元测试jest
 
-## 单元测试jest配置
+运行`vue ui`，在插件中添加插件`@vue/cli-plugin-unit-jest`，项目里会生成相应命令和`tests`文件夹。
+
+如果运行`npm run test:unit`报错，错误信息如下：
+```js
+FAIL  src/App.test.js
+  ● Test suite failed to run
+
+    ReferenceError: [BABEL] C:\Users\htbst\Desktop\woyin-h5\src\App.test.js: Unknown option: base.configFile. Check out http://babeljs.io/docs/usage/options/ for more information about options.
+
+    A common cause of this error is the presence of a configuration options object without the corresponding preset name. Example:
+
+    Invalid:
+      `{ presets: [{option: value}] }`
+    Valid:
+      `{ presets: [['presetName', {option: value}]] }`
 ```
+可以使用 `"babel-core": "7.0.0-bridge.0"` 代替 `"babel-core": "^6.26.3"`
+
+## 单元测试jest配置
+```js
 module.exports = {
   preset: '@vue/cli-plugin-unit-jest',
   moduleNameMapper: { // 别名
     // eslint-disable-next-line no-useless-escape
-    '^@\/(.*?\.?(js|vue)?|)$': '<rootDir>/src/$1',
-    '^@assets\/(.*?\.?(js|vue)?|)$': '<rootDir>/src/assets/$1',
-    '^@api\/(.*?\.?(js|vue)?|)$': '<rootDir>/src/api/$1',
-    '^@components\/(.*?\.?(js|vue)?|)$': '<rootDir>/src/components/$1',
-    '^@config\/(.*?\.?(js|vue)?|)$': '<rootDir>/src/config/$1',
-    '^@store\/(.*?\.?(js|vue)?|)$': '<rootDir>/src/store/$1',
-    '^@theme\/(.*?\.?(js|vue)?|)$': '<rootDir>/src/theme/$1',
-    '^@utils\/(.*?\.?(js|vue)?|)$': '<rootDir>/src/utils/$1'
+    '^@\/(.*?\.?(js|vue)?|)$': '<rootDir>/src/$1'
   },
   coverageDirectory: '<rootDir>/tests/unit/coverage', // 覆盖率报告的目录
   // collectCoverage: true, // 是否开启测试覆盖率输出
@@ -21,12 +32,11 @@ module.exports = {
     // 'src/components/**/*.(js|vue)',
     'src/**/*.(vue)',
     '!src/main.js',
-    '!src/router/index.js',
     '!**/node_modules/**'
   ],
-  testMatch: [ //匹配测试用例的文件，只需测试单个时配置
-    '<rootDir>/tests/unit/spec/CartTotal.spec.js'
-  ],
+  // testMatch: [ //匹配测试用例的文件，只需测试单个时配置
+  //   '<rootDir>/tests/unit/spec/CartTotal.spec.js'
+  // ],
 }
 
 ```

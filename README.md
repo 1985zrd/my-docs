@@ -1,16 +1,16 @@
 ---
 home: true
 heroImage: /logo.png
-heroText: 前端学习圈
-tagline: Hero 副标题
-actionText: 快速上手 →
-actionLink: /web前端/
+heroText: 好好学习
+tagline: 
+actionText: 了解我 →
+actionLink: /doc/随笔/关于我.md
 features:
-- title: 简洁至上
-  details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
-- title: Vue驱动
-  details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
-- title: 高性能
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
-footer: MIT Licensed | Copyright © 2018-present Evan You
+- title: 记录工作
+  details: 记录工作中比较有意思的事或工作中遇到的技术上的难点
+- title: 记录学习
+  details: 记录学习笔记，好记性不如烂笔头
+- title: 历程总结
+  details: 每个历程做一个总结，记录过程中的酸甜苦辣
+footer: MIT Licensed | Copyright (c) 2020 京ICP备20003692号 rd_1985@163.com
 ---

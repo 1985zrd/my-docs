@@ -1,1 +1,1 @@
-## 目录[dom](dom.md)
+## 目录[dom](dom.md)[javascript随记](javascript随记.md)[Promise解析（未完待续）](Promise解析（未完待续）.md)

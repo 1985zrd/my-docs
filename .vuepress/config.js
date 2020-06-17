@@ -18,7 +18,7 @@ module.exports = {
         logo: '/logo.png',
         nav: [
             {
-                text: '学习',
+                text: '文档',
                 items: [
                     { text: 'web前端', link: '/docs/web前端/' },
                     { text: '', items: [
@@ -29,6 +29,10 @@ module.exports = {
                             {
                                 text: 'vue',
                                 link: '/docs/vue/'
+                            },
+                            {
+                                text: '组件库',
+                                link: '/docs/组件库/'
                             },
                             {
                                 text: '源码',
@@ -52,8 +56,8 @@ module.exports = {
                 //     }
                 // ]
             },
-            { text: '关于我', link: '/docs/about/' },
-            { text: 'git', link: 'https://github.com/1985zrd' }
+            { text: '网站', link: 'https://www.p-80.net/' },
+            { text: 'github', link: 'https://github.com/1985zrd' }
         ],
         sidebarDepth: 2,
         // displayAllHeaders: true,
