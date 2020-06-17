@@ -4,7 +4,7 @@ heroImage: /logo.png
 heroText: 好好学习
 tagline: 
 actionText: 了解我 →
-actionLink: /doc/随笔/关于我.md
+actionLink: /docs/随笔/关于我.md
 features:
 - title: 记录工作
   details: 记录工作中比较有意思的事或工作中遇到的技术上的难点
