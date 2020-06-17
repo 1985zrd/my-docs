@@ -41,7 +41,19 @@ module.exports = {
                             {
                                 text: '其他',
                                 link: '/docs/other/'
-                            }
+                            },
+                            {
+                                text: 'css',
+                                link: '/docs/css/'
+                            },
+                            {
+                                text: 'html',
+                                link: '/docs/html/'
+                            },
+                            {
+                                text: 'javascript',
+                                link: '/docs/javascript/'
+                            },
                         ]
                     }
                 ]
