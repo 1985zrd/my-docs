@@ -166,7 +166,7 @@ $borderColor: #E1E0DF;
 
 ```
 Vue.directive('transfer-dom', function (el, binding) {
-    document.body.appendChild(el) // 还是要参照vux写好一些
+    document.body.appendChild(el) // 大体是这样，详细的参考vux，xux还用了一个注释节点替换el
 }
 ```
 
@@ -357,3 +357,52 @@ export const setFontSize = function () {
     <title>标题</title>
 </head>
 ```
+
+## 视频播放
+> 移动端对视频格式和界面的支持不一致
+
+请参考 [移动端H5视频播放](./移动端H5视频播放.md)
+
+## 调试
+> 移动端调试
+
+[vconsole](https://github.com/Tencent/vConsole)
+[eruda](https://github.com/chalk/chalk)
+
+2个都很好用。如果是bug定位，我觉得还是模拟器好用。
+
+## 动画尽量使用css3
+
+动画尽量用transform，避免改变top、left这种方式。
+
+可以使用3D动画，开启GPU硬件加速模式。
+
+## 图片懒加载
+
+对于页面中图片较多，使用图片懒加载。
+
+vue: [vue-lazyload](https://github.com/hilongjw/vue-lazyload)
+
+## autoprefix
+
+[参考](https://www.jianshu.com/p/bd9cb7861b85)
+
+`package.json`里的`browsersList`设置是`last 2 versions`，可能会导致你在某些`Android`机子上出现问题。如果你使用 `last 7 versions` 会生成不必要的 `-ms` 前缀代码。可以添加 `"Android >= 4.1"`
+
+`react` 默认的：
+```json
+"browserslist": {
+  "production": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "development": [
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version"
+  ]
+}
+```
+
+

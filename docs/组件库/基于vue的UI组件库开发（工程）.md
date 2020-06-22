@@ -854,7 +854,7 @@ Vue.use(Button)
 ## 单元测试
 运行`vue ui`，在插件中添加插件`@vue/cli-plugin-unit-jest`，项目里会生成`tests`文件夹，这里就是放单元测试的地方。
 
-详细内容参考 [vue单元测试](../vue/vue单元测试jest.md)
+详细内容参考 [vue单元测试](./vue单元测试jest.md)
 
 ## 国际化
 详细内容参考 [国际化](./国际化.md)
