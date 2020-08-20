@@ -68,3 +68,94 @@ $request.interceptors.request.use(config => {
 })
 ```
 
+## 复制文件 
+`createReadStream` | `createWriteStream` | `mkdirSync` | `readdir` | `stat` | `isDirectory`
+
+```js
+var copyFile = function(srcPath, tarPath, cb) {
+  var rs = fs.createReadStream(srcPath) // 可读流
+  rs.on('error', function(err) {
+    if (err) {
+      console.log('read error', srcPath)
+    }
+    cb && cb(err)
+  })
+  rs.on('data', function(data) {
+    if (rs.path.indexOf('index.html') !== -1) {
+      let str = data.toString()
+      let newStr = str.replace(/<\/head>/, script + '</head>')
+      ws.write(newStr)
+    } else if (rs.path.indexOf('shareConfig.json') !== -1) {
+      let str = data.toString()
+      let newStr = str.replace(/true/, false)
+      ws.write(newStr)
+    } else {
+      ws.write(data)
+    }
+  })
+
+  var ws = fs.createWriteStream(tarPath) // 可写流
+  ws.on('error', function(err) {
+    if (err) {
+      console.log('write error', tarPath)
+    }
+    cb && cb(err)
+  })
+  ws.on('close', function(ex) {
+    cb && cb(ex)
+  })
+}
+
+var copyFolder = function(srcDir, tarDir, cb) {
+  rm(tarDir, function (err) { // 清空目标文件夹 rm是第三方插件rimraf
+    if (err) {
+      console.log(err)
+      return
+    }
+    fs.mkdirSync(tarDir) // 同步新建文件夹
+    fs.readdir(srcDir, function(err, files) { // 读取文件夹
+        var count = 0
+        var checkEnd = function() {
+          ++count == files.length && cb && cb()
+        }
+    
+        if (err) {
+          checkEnd()
+          return
+        }
+    
+        files.forEach(function(file) {
+          var srcPath = path.join(srcDir, file)
+          var tarPath = path.join(tarDir, file)
+    
+          fs.stat(srcPath, function(err, stats) { // 检查文件是否存在
+            if (stats.isDirectory()) { // 是不是文件夹
+              console.log('mkdir', tarPath)
+              fs.mkdir(tarPath, function(err) {
+                if (err) {
+                  console.log(err)
+                  return
+                }
+    
+                copyFolder(srcPath, tarPath, checkEnd)
+              })
+            } else {
+              copyFile(srcPath, tarPath, checkEnd)
+            }
+          })
+        })
+    
+        //为空时直接回调
+        files.length === 0 && cb && cb()
+      })
+    })
+  
+}
+
+copyFolder('./dist', './production', function (err) {
+  if (err) {
+    console.log(err)
+  }
+})
+```
+

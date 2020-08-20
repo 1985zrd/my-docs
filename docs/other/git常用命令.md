@@ -44,6 +44,13 @@
 git log --author="username" --since=2020-03-27 --until=2020-04-02 --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { 
 printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -;
 ```
+```js
+// 查8小时
+git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --since ==8.hour.ago --until= --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
+
+// 查一周
+git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --since ==1.week.ago --until= --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
+```
 
 ## 本地目录提交到git仓库
 如果你在本地初始化好项目后，再创建的git仓库，适合下面步骤：
