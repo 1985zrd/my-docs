@@ -1,6 +1,51 @@
 # vue开发小技巧
 > 每个项目情况都不一样，使用时需根据当前项目修改。
 
+## postcss
+```js
+// postcss.config.js
+module.exports = ({ file }) => {
+  let remUnit = null // 判断条件vant插件使用1倍,自定义组件使用2倍
+  if (file && file.dirname && file.dirname.indexOf('vant') > -1) { remUnit = 100 } else { remUnit = 200 }
+  return { plugins: {
+    'postcss-import': {},
+    'postcss-url': {},
+    autoprefixer: {},
+    'postcss-lazyimagecss': {},
+    'postcss-pxtorem': {
+      rootValue: remUnit,
+      prop_white_list: [],
+      mediaQuery: false,
+      selectorBlackList: [/html/, /body/, /\.baseWidth/],
+      minPixelValue: 2
+    },
+    cssnano: {
+      preset: [
+        'default',
+        {
+          autoprefixer: false,
+          reduceIdents: false,
+          mergeIdents: true,
+          zindex: false
+        }
+      ]
+    }
+  }
+  }
+}
+// 或者
+'postcss-pxtorem': {
+  rootValue ({ file }) {
+    console.log(file)
+    return file.indexOf('vant') !== -1 ? 37.5 : 75
+  },
+  prop_white_list: [],
+  mediaQuery: false,
+  selectorBlackList: [/html/, /body/, /\.baseWidth/],
+  minPixelValue: 2
+},
+```
+
 ## 依赖库分析工具
 1. 安装本地依赖
 ```
