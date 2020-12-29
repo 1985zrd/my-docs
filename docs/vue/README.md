@@ -1,1 +1,1 @@
-## 目录[Nuxt](Nuxt.js初探.md)[vue可复用组件开发基础](vue可复用组件开发基础.md)[vue开发小技巧](vue开发小技巧.md)
+## 目录[Nuxt](Nuxt.js初探.md)[vue可复用组件开发基础](vue可复用组件开发基础.md)[vue开发小技巧](vue开发小技巧.md)[基于Vue的web管理系统开发](基于Vue的web管理系统开发.md)
